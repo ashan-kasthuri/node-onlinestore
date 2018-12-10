@@ -1,0 +1,25 @@
+extends ../layouts/main-layout.pug
+block variables
+  - var pageTitle = title || 'Shop';
+  - var pagePath = path || "/products";
+
+block styles
+  link(rel="stylesheet", href="/css/product.css")
+
+block content
+  if products.length > 0
+    .grid
+      each product in products
+        article.card.product-item
+          header.card_header
+            h1.product__title #{product.title}
+            .card_image
+              img(src=product.imageUrl, alt="A Book", width="100%")
+            .card__content
+              h2.product__price $#{product.price}
+              p.product__description #{product.description}
+            .card__actions
+              a.btn(href="/products/" + product.id) Details
+              include ../partials/shop/add-to-cart-form 
+  else
+    h1 No Products

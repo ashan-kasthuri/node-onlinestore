@@ -1,0 +1,28 @@
+extends ../layouts/main-layout.pug
+
+block variables
+  - var pageTitle = title || 'Admin Products'
+  - var pagePath = path || "/admin/products"
+
+block styles
+  link(rel="stylesheet", href="/css/product.css")
+
+block content
+  if products.length > 0
+    .grid
+      each product in products
+        article.card.product-item
+          header.card_header
+            h1.product__title #{product.title}
+            .card_image
+              img(src=product.imageUrl, alt="A Book", width="100%")
+            .card__content
+              h2.product__price $#{product.price}
+              p.product__description #{product.description}
+            .card__actions
+              a.btn(href="/admin/edit-product/" + product.id) Edit
+              form.product-form(action="/admin/delete-product", method="post")
+                input(type="hidden", name="productId", value=product.id)
+                button.btn(type="submit") Delete
+  else
+    h1 No Products

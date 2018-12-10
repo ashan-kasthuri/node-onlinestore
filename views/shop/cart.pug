@@ -1,0 +1,18 @@
+extends ../layouts/main-layout.pug
+
+block variables
+  - var pageTitle = title || 'Your Cart'
+  - var pagePath = path || "/cart"
+
+block  content
+  if products.length>0
+    ul
+    each p in products
+      li
+        p #{p.productData.title} (#{p.qty})
+        form(action="/cart-delete-product", method="post")
+          input(type="hidden", name="productId", value=p.productData.id)
+          button(type="submit") Delete
+
+  else
+    h1 No Products in Cart

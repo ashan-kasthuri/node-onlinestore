@@ -1,0 +1,7 @@
+extends layouts/main-layout.pug
+block variables
+  - var pageTitle = title || 'Page Not Found '
+  - var seperator = path ? ':' : ''
+
+block content
+  h1 Page Not Found! #{method}#{seperator}#{path}

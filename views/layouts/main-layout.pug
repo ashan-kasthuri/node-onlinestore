@@ -1,0 +1,49 @@
+block variables
+  // pageTitle
+  // pagePath
+
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    link(rel="stylesheet", href="/css/main.css")
+    block styles
+    title #{pageTitle || "Default Title"}
+  body
+    .backdrop
+    header.main-header
+      btn#side-menu-toggle Menu
+      nav.main-header__nav
+        ul.main-header__item-list
+          li.main-header__item
+            a(href="/", class=(pagePath==='/'? 'active':'')) Shop
+          li.main-header__item
+            a(href="/products", class=(pagePath==='/products'? 'active':'')) Products
+          li.main-header__item
+            a(href="/cart", class=(pagePath==='/cart'? 'active':'')) Cart
+          li.main-header__item
+            a(href="/orders", class=(pagePath==='/orders'? 'active':'')) Orders
+          li.main-header__item
+            a(href="/admin/add-product", class=(pagePath==='/admin/add-product'? 'active':'')) Add Product
+          li.main-header__item
+            a(href="/admin/products", class=(pagePath==='/admin/products'? 'active':'')) Admin  Products
+
+      nav.mobile-nav
+        ul.mobile-nav__item-list
+          li.mobile-nav__item
+            a(href="/", class=(pagePath==='/'? 'active':'')) Shop
+          li.mobile-nav__item
+            a(href="/products", class=(pagePath==='/products'? 'active':'')) Products
+          li.mobile-nav__item
+            a(href="/cart", class=(pagePath==='/cart'? 'active':'')) Cart
+          li.mobile-nav__item
+            a(href="/orders", class=(pagePath==='/orders'? 'active':'')) Orders
+          li.mobile-nav__item
+            a(href="/admin/add-product", class=(pagePath==='/admin/add-product'? 'active':'')) Add Product
+          li.mobile-nav__item
+            a(href="/admin/products", class=(pagePath==='/admin/products'? 'active':'')) Admin  Products
+    main
+      block content
+      script(src="/js/main.js")

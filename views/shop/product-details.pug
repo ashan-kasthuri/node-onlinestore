@@ -1,0 +1,17 @@
+extends ../layouts/main-layout.pug
+block variables
+  - var pageTitle = title || product.title;
+  - var pagePath = path || "/products"
+
+block styles
+  link(rel="stylesheet", href="/css/product.css")
+
+block  content
+  .centered
+    h1 #{product.title}
+    hr
+    div
+      img(src=product.imageUrl, alt=product.title)
+    h2 #{product.price}
+    p #{product.description}
+    include ../partials/shop/add-to-cart-form

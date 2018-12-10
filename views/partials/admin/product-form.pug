@@ -1,0 +1,21 @@
+- var actionUrl = product ? "/admin/edit-product/" + product.id : "/admin/add-product"
+- var prodTitle = product ? product.title : ''
+- var prodImageUrl = product? product.imageUrl : ''
+- var prodPrice = product? product.price : ''
+- var prodDescription = product? product.description : ''
+
+form.product-form(action=actionUrl, method="post")
+  .form-control
+    label(for="title") Title
+    input#title(type="text", name="title", value=prodTitle)
+  .form-control
+    label(for="imageUrl") Image Url
+    input#imageUrl(type="text", name="imageUrl", value=prodImageUrl)
+  .form-control
+    label(for="price") Price
+    input#price(type="number", name="price", step="0.01", value=prodPrice)
+  .form-control
+    label(for="description") Description
+    textarea#description(name="description", rows="5") #{prodDescription}
+
+  button.btn(type="submit") #{submitButtonDisplay ? submitButtonDisplay : 'Submit'}
